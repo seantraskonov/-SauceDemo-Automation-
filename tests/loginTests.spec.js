@@ -8,8 +8,8 @@ test.describe('Login Tests', () => {
     const loginPage = new LoginPage(page)
     await loginPage.navigate(BASE_URL)
     await loginPage.login(USERS.locked.username, USERS.locked.password)
-    await expect(loginPage.errorMessage).toBeVisible()
-    await expect(loginPage.errorMessage).toContainText('locked out')
+    await expect (loginPage.errorMessage).toBeVisible()
+    expect(await loginPage.getErrorMessage()).toContain('locked out')
   })
 
   test('Negative Login - wrong password', async ({page}) => {

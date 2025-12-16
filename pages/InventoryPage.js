@@ -25,19 +25,24 @@ export class InventoryPage {
   async getPageTitle() {
     return await this.pageTitle.innerText()
   }
-  // Add specific itens to the cart
+  // Add specific items to the cart
   async addBackpackToCart() {
     await this.addBackpackBtn.click()
-  }
+  }// Add bikelight item to the cart
   async addBikeLightToCart() {
     await this.addBikeLightBtn.click()
   }
   // Get the number displayed on the cart badge
   async getCartBadgeCount() {
-    return await this.cartBadge.innerText()
+    const text = await this.cartBadge.innerText()
+    return Number(text)
   }
   // Navigate to the cart page
   async goToCart() {
     await this.cartIcon.click()
+  }
+  // Remove backpack from cart
+  async removeBackpackFromCart() {
+    await this.removeBackpackBtn.click()
   }
 }
