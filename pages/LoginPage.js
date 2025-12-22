@@ -1,22 +1,29 @@
-export class LoginPage {
-  constructor(page) {
-    this.page = page
-    // Locators
-    this.usernameInput = page.locator('#user-name')
-    this.passwordInput = page.locator('#password')
-    this.loginButton = page.locator('#login-button')
-    this.errorMessage = page.locator('[data-test="error"]')
+ import {BASE_URL} from '../data/urls.js';
+
+ export class LoginPage {
+   constructor(page) {
+    this.page = page;
   }
-  // Actions / Methods
-  async navigate(baseUrl) {
-    await this.page.goto(baseUrl)
+  // Locators
+  get usernameField() {
+    return this.page.locator('[data-test="username"]');
   }
-  async login(username, password) {
-    await this.usernameInput.fill(username)
-    await this.passwordInput.fill(password)
-    await this.loginButton.click()
+  get passwordField() {
+    return this.page.locator('[data-test="password"]');
   }
-  async getErrorMessage() {
-    return await this.errorMessage.innerText()
+  get loginBtn() {
+    return this.page.locator('[data-test="login-button"]');
   }
-}
+  get errorMessage() {
+    return this.page.locator('[data-test="error"]');
+   }
+  // Navigate to login page
+  async navigate() {
+    await this.page.goto(BASE_URL);
+   }
+  // Login action
+   async login(username, password) {
+    await this.usernameField.fill(username);
+    await this.passwordField.fill(password);
+    await this.loginBtn.click();
+  }}

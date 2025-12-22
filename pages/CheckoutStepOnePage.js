@@ -1,23 +1,18 @@
-export class CheckoutStepOnePage {
-  constructor(page) {
-    this.page = page
+     export class CheckoutStepOnePage {
+     constructor(page) {
+        this.page = page;
+     }
+     // Getters for information fields based on codegen lines 18-27
+     get firstNameField() { return this.page.locator('[data-test="firstName"]'); }
+     get lastNameField() { return this.page.locator('[data-test="lastName"]'); }
+     get postalCodeField() { return this.page.locator('[data-test="postalCode"]'); }
+     get continueBtn() { return this.page.locator('[data-test="continue"]'); }
 
-    // Locators
-    this.pageTitle = page.locator('.title')
-    this.firstName = page.locator('#first-name')
-    this.lastName = page.locator('#last-name')
-    this.postalCode = page.locator('#postal-code')
-    this.continueButton = page.locator('#continue')
-  }
-  // Actions / Methods
-  async getPageTitle() {
-    return await this.pageTitle.innerText()
-  }
-  // Fill the checkout form
-  async fillDetails(firstName, lastName, zip) {
-    await this.firstName.fill(firstName)
-    await this.lastName.fill(lastName)
-    await this.postalCode.fill(zip)
-    await this.continueButton.click()
-  }
-}
+     // Method to fill user info and proceed to next step
+     async fillInformation(fname, lname, zip) {
+        await this.firstNameField.fill(fname);
+        await this.lastNameField.fill(lname);
+        await this.postalCodeField.fill(zip);
+        await this.continueBtn.click();
+     }
+     }

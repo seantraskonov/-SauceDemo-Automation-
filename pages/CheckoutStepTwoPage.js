@@ -1,19 +1,13 @@
-export class CheckoutStepTwoPage {
-  constructor(page) {
-    this.page = page
-    // Locators
-    this.pageTitle = page.locator('.title')
-    this.finishButton = page.locator('#finish')
-    this.summaryTotal = page.locator('.summary_total_label')
-  }
-  // Actions / Methods
-  async getPageTitle() {
-    return await this.pageTitle.innerText()
-  }
-  async finishCheckout() {
-    await this.finishButton.click()
-  }
-  async getSummaryTotal() {
-    return await this.summaryTotal.innerText()
-  }
-}
+     export class CheckoutStepTwoPage {
+     constructor(page) {
+        this.page = page;
+     }
+
+     // Getter for the finish button based on codegen line 22
+     get finishBtn() { return this.page.locator('[data-test="finish"]'); }
+
+     // Method to complete the order
+     async finishOrder() {
+     await this.finishBtn.click();
+     }
+     }
