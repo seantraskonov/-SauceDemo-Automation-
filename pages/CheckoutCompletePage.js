@@ -1,6 +1,7 @@
 export class CheckoutCompletePage {
-   constructor(page) {
-      this.page = page
-   }
-successHeader = ('[data-test="complete-header"]')
+  successHeader = '[data-test="complete-header"]'
+
+  constructor(page) {
+    this.page = page
+  }
 }
